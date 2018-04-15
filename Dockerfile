@@ -48,6 +48,8 @@ RUN cd /tmp \
  && ln -sf $OPENRESTY_PREFIX/luajit/bin/luajit-* /usr/local/bin/lua \
  && rm -rf /tmp/ngx_openresty*
 
+RUN mkdir -p /var/log/nginx/
+
 EXPOSE 80
 EXPOSE 443
 
