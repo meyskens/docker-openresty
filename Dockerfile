@@ -1,10 +1,11 @@
 ARG ARCH
-FROM multiarch/debian-debootstrap:${ARCH}-jessie
+FROM $ARCH/debian:buster
 
-RUN echo "deb http://httpredir.debian.org/debian jessie-backports main" >>/etc/apt/sources.list
+#ARG QEMU_BIN
+#COPY $QEMU_BIN /usr/bin
 
 RUN apt-get update && apt-get -y upgrade
-RUN apt-get install -y -t jessie-backports \
+RUN apt-get install -y \
     curl perl make build-essential procps \
     libreadline-dev libncurses5-dev \
     libpcre3-dev libssl-dev openssl \
