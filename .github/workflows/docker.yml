@@ -34,7 +34,7 @@ jobs:
         DOCKER_CLI_EXPERIMENTAL: enabled
         DOCKER_PREFIX: maartje/openresty
     - name: Log in to registry
-      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "meyskens" --password-stdin
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "meyskens" --password-stdin
     - name: Push image
       run: docker push maartje/openresry
   publish-manifest:
@@ -50,7 +50,7 @@ jobs:
           sudo service docker restart
           docker run --rm --privileged multiarch/qemu-user-static:register
       - name: Log in to registry
-        run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u "meyskens" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "meyskens" --password-stdin
       - name: Create Manifest 
         run: |
           docker manifest create $DOCKER_PREFIX:$VERSION $DOCKER_PREFIX:amd64-$VERSION $DOCKER_PREFIX:arm32v7-$VERSION $DOCKER_PREFIX:arm64v8-$VERSION
