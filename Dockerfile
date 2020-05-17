@@ -1,8 +1,8 @@
 ARG ARCH
 FROM $ARCH/debian:buster
 
-#ARG QEMU_BIN
-#COPY $QEMU_BIN /usr/bin
+ARG QEMU_BIN
+COPY $QEMU_BIN /usr/bin
 
 RUN apt-get update && apt-get -y upgrade
 RUN apt-get install -y \
